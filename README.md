@@ -7,8 +7,8 @@
 - **Railway**：运行后端、管理后台、Worker 和数据服务。
 - **你负责**：云服务账号、域名及相关费用。
 
-> **安装请使用更新后的工具**：[1.0.0-refresh.1 下载页](https://github.com/YundaDesk/yundastore-releases/releases/tag/installer-refresh-1.0.0-1)。
-> 建店前执行一次签名元数据刷新（步骤 4），即可继续使用原 Stable 1.0.0 的店铺材料。
+> **只需下载一个 ZIP**：[Yundastore 1.0.0 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/installer-refresh-1.0.0-1/yundastore-1.0.0-install.1.zip)。
+> 解压后已包含安装工具、依赖、Skill、签名发行包及前台部署材料，无需运行 npm install。
 
 ## 1. 准备好这些
 
@@ -19,63 +19,32 @@
 
 Token、密码等凭据稍后在本地设置页面中输入，**不要发送到聊天里**。
 
-## 2. 下载四个安装文件
+## 2. 下载并解压
 
-下载下列四个文件：安装工具使用更新版，其余三个继续使用原 Stable 1.0.0。
-
-| 文件 | 用途 |
-| --- | --- |
-| [yundastorectl-1.0.0-refresh.1.tar.gz](https://github.com/YundaDesk/yundastore-releases/releases/download/installer-refresh-1.0.0-1/yundastorectl-1.0.0-refresh.1.tar.gz) | 本地安装工具及其依赖 |
-| [yundastore-skill-1.0.0.tar.gz](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.0/yundastore-skill-1.0.0.tar.gz) | 指导 Agent 建店的 Skill |
-| [yundastore-stable-1.0.0-bundle.tar.gz](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.0/yundastore-stable-1.0.0-bundle.tar.gz) | 安装工具验证的签名发行包 |
-| [storefront-deployment-source-frozen.tar.gz](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.0/storefront-deployment-source-frozen.tar.gz) | 部署到 Vercel 的前台材料 |
-
-首次建店无需手动下载其余 SBOM、报告或单独的模板归档，也无需自行构建 Docker 镜像。
-
-## 3. 解压到一个工作目录
-
-例如创建 `yundastore-install`，按下面的布局解压。CLI 压缩包中的隐藏 `.dependencies` 目录
-也要保留，不要只复制 `cli` 文件夹。
+下载上面的 ZIP，使用系统解压工具解压，打开其中的 `yundastore-install` 文件夹。
+不要逐个下载 release 中的其他附件；那些是独立校验材料和历史交付文件。
 
 ```text
 yundastore-install/
-├── cli/
-├── .dependencies/
+├── README.md
+├── refresh.json
+├── refresh-offline.json
+├── cli/                          # 已含依赖
 ├── .agents/skills/yundastore-store-lifecycle/
-├── bundle/
-│   ├── release.json
-│   ├── release.sig
-│   ├── trust.json
-│   ├── trust.sig
-│   └── blobs/
-└── storefront/
-    └── apps/storefront/…
+├── bundle/                       # 原签名发行包
+├── storefront/                   # Vercel 前台部署材料
+└── metadata/                     # 当前签名元数据快照
 ```
 
-macOS 可在四个下载文件所在的目录执行：
-
-```sh
-mkdir -p yundastore-install/bundle yundastore-install/storefront
-tar -xzf yundastorectl-1.0.0-refresh.1.tar.gz -C yundastore-install
-tar -xzf yundastore-skill-1.0.0.tar.gz -C yundastore-install
-tar -xzf yundastore-stable-1.0.0-bundle.tar.gz -C yundastore-install/bundle
-tar -xzf storefront-deployment-source-frozen.tar.gz -C yundastore-install/storefront
-```
-
-Windows 可让 Agent 帮你按同样布局解压，保留压缩包中的目录关系。
-在 Agent 中打开这个工作目录，并确认它已加载 `yundastore-store-lifecycle` Skill。
+在 Agent 中打开这个目录，确认它已加载 `yundastore-store-lifecycle` Skill。
 如果没有自动发现，请让它读取 `.agents/skills/yundastore-store-lifecycle/SKILL.md`。
 
-已安装旧工具的用户：把新 CLI 解压到新目录，保留 `cli` 与 `.dependencies` 的相对布局，
-继续引用原来的 bundle 和 storefront；不要把新旧 CLI 文件混在一起，也不要删除原安装状态。
+旧用户也请解压到新目录使用，不要混合覆盖旧 CLI；保留已有安装状态和 checkpoint。
+ZIP 不包含 Node.js 或云服务账号，环境要求见上方；执行计划前仍需你明确批准。
 
-## 4. 刷新安装授权，然后交给 Agent
+## 3. 刷新安装授权，然后交给 Agent
 
-在 `yundastore-install` 目录创建 `refresh.json`：
-
-```json
-{"bundle":"./bundle"}
-```
+在 `yundastore-install` 目录中，`refresh.json` 已准备好。
 
 执行（也可让 Agent 帮你执行）：
 
@@ -86,9 +55,13 @@ node cli/bin/yundastorectl.mjs stable refresh --input refresh.json
 看到 `metadata_refreshed` 后继续。这个步骤会获取并验证当前的 trust 和运行授权，
 无需重新下载镜像或模板。以后再次安装前也先执行它。
 
-无法联网时，可从[工具更新页](https://github.com/YundaDesk/yundastore-releases/releases/tag/installer-refresh-1.0.0-1)
-下载 `stable-metadata-20261023.tar.gz` 并解压到 `metadata`，将输入改为
-`{"bundle":"./bundle","metadata_directory":"./metadata"}`。离线材料也必须仍在有效期内。
+无法联网时，可使用 ZIP 自带的签名元数据快照：
+
+```sh
+node cli/bin/yundastorectl.mjs stable refresh --input refresh-offline.json
+```
+
+离线快照也必须仍在有效期内；过期后请联网刷新。安装包无需因快照过期而重新下载。
 
 随后把这段话交给 Agent：
 
@@ -111,7 +84,7 @@ Agent 会依次带你完成：
 3. 展示安装计划，包括资源、费用边界和域名设置；由你确认后开始执行。
 4. 按提示在域名服务商处设置 DNS，随后继续验证店铺和管理后台。
 
-## 5. 安装中断怎么办？
+## 4. 安装中断怎么办？
 
 在**原工作目录和原 Agent 会话**中说：
 
@@ -124,5 +97,5 @@ Agent 会依次带你完成：
 ## 许可与更多说明
 
 Yundastore 采用零价自用许可；云服务和第三方服务费用由你承担。
-完整使用范围见 [许可 1.1](LICENSE.md)，首次信任和签名说明见 [TRUST.md](TRUST.md)，
-版本变化见 [发行说明](RELEASE-NOTES-1.0.0.md)。
+完整使用范围见 [许可 1.1](https://github.com/YundaDesk/yundastore-releases/blob/main/LICENSE.md)，首次信任和签名说明见 [TRUST.md](https://github.com/YundaDesk/yundastore-releases/blob/main/TRUST.md)，
+版本变化见 [发行说明](https://github.com/YundaDesk/yundastore-releases/blob/main/RELEASE-NOTES-1.0.0.md)。
