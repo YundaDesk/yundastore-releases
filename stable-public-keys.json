@@ -1,0 +1,15 @@
+{
+  "kind": "yundastore-stable-public-keys",
+  "schema_version": "1.0.0",
+  "root": {
+    "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPR+TpRHlEw/zwOuSGGdTsyBjhJl88LzjXw9HM/Fo+k",
+    "key_id": "2cda4c3479c643df0d36f824cee21013d3f3f267e773bfc4c10cc773501f11c3",
+    "openssh_fingerprint": "SHA256:WYwyPVQmGuvNh/+AZFhkATFKGrI9daYNkH+U1h2d+0M"
+  },
+  "issuer": {
+    "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMWOar7UhD/aT/6U8si4wAXGV6USaSrIEUVsEC5Y/rLw",
+    "key_id": "9cb4c6510f331409bc911d040e88b4a5a7b58581ec435d237cf8265a59b679dc",
+    "openssh_fingerprint": "SHA256:yX+uCOC1FZ1lrSm4RgezPw/YAz+vLkdpFbZfQ4eeHPg"
+  },
+  "issuer_authorized_by_signed_trust": false
+}
