@@ -7,7 +7,7 @@
 - **Railway**：运行后端、管理后台、Worker 和数据服务。
 - **你负责**：云服务账号、域名及相关费用。
 
-> **只需下载一个 ZIP**：[Yundastore 1.0.0 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.0/yundastore-1.0.0-install.1.zip)。
+> **只需下载一个 ZIP**：[Yundastore 1.0.1 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.1/yundastore-1.0.1-install.zip)。
 > 解压后已包含安装工具、依赖、Skill、签名发行包及前台部署材料，无需运行 npm install。
 
 ## 1. 准备好这些
@@ -98,4 +98,4 @@ Agent 会依次带你完成：
 
 Yundastore 采用零价自用许可；云服务和第三方服务费用由你承担。
 完整使用范围见 [许可 1.1](https://github.com/YundaDesk/yundastore-releases/blob/main/LICENSE.md)，首次信任和签名说明见 [TRUST.md](https://github.com/YundaDesk/yundastore-releases/blob/main/TRUST.md)，
-版本变化见 [发行说明](https://github.com/YundaDesk/yundastore-releases/blob/main/RELEASE-NOTES-1.0.0.md)。
+版本变化见 [发行说明](https://github.com/YundaDesk/yundastore-releases/blob/main/RELEASE-NOTES-1.0.1.md)。
