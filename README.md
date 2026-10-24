@@ -10,6 +10,12 @@
 > **只需下载一个 ZIP**：[Yundastore 1.0.1 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.1/yundastore-1.0.1-install.zip)。
 > 解压后已包含安装工具、依赖、Skill、签名发行包及前台部署材料，无需运行 npm install。
 
+## 已有 1.0.0 店铺升级
+
+下载 [1.0.0 → 1.0.1 升级工具包](https://github.com/YundaDesk/yundastore-releases/releases/download/upgrade-1.0.0-to-1.0.1-1/yundastore-1.0.0-to-1.0.1-upgrade.1.zip)，解压到独立目录，保留原安装历史与本地状态。工具会先核验备份，再按批准的 Plan 更新后端、Worker 和前台，复用原数据服务和配置。
+
+使用专用 `stable upgrade-*` 流程，**不要对已有店铺重新执行新建安装**。详见 [升级步骤与恢复说明](UPGRADE-1.0.0-TO-1.0.1.md)。下载和刷新授权不会自动升级店铺。
+
 ## 1. 准备好这些
 
 - macOS 或 Windows，以及支持本地 Skill、终端和浏览器的 AI Agent。
