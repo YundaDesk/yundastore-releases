@@ -7,14 +7,14 @@
 - **Railway**：运行后端、管理后台、Worker 和数据服务。
 - **你负责**：云服务账号、域名及相关费用。
 
-> **只需下载一个 ZIP**：[Yundastore 1.0.2 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.2/yundastore-1.0.2-install.zip)。
+> **只需下载一个 ZIP**：[Yundastore 1.0.3 安装包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.3/yundastore-1.0.3-install.zip)。
 > 解压后已包含安装工具、依赖、Skill、签名发行包及前台部署材料，无需运行 npm install。
 
-## 已有 1.0.0 或 1.0.1 店铺升级
+## 已有 1.0.0、1.0.1 或 1.0.2 店铺升级
 
-下载 [升级到 1.0.2 的工具包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.2/yundastore-to-1.0.2-upgrade.1.zip)，解压到独立目录，保留原安装历史与本地状态。工具会先核验备份，再按批准的 Plan 更新后端、Worker 和前台，复用原数据服务和配置。
+下载 [升级到 1.0.3 的工具包](https://github.com/YundaDesk/yundastore-releases/releases/download/v1.0.3/yundastore-to-1.0.3-upgrade.1.zip)，解压到独立目录，保留原安装历史与本地状态。工具会先核验备份，再按批准的 Plan 更新后端、Worker 和前台，复用原数据服务和配置。
 
-使用专用 `stable upgrade-*` 流程，**不要对已有店铺重新执行新建安装**。详见 [升级步骤与恢复说明](UPGRADE-TO-1.0.2.md)。下载和刷新授权不会自动升级店铺。
+使用专用 `stable upgrade-*` 流程，**不要对已有店铺重新执行新建安装**。详见 [升级步骤与恢复说明](https://github.com/YundaDesk/yundastore-releases/blob/main/UPGRADE-TO-1.0.3.md)。下载和刷新授权不会自动升级店铺。
 
 ## 1. 准备好这些
 
@@ -104,4 +104,4 @@ Agent 会依次带你完成：
 
 Yundastore 采用零价自用许可；云服务和第三方服务费用由你承担。
 完整使用范围见 [许可 1.1](https://github.com/YundaDesk/yundastore-releases/blob/main/LICENSE.md)，首次信任和签名说明见 [TRUST.md](https://github.com/YundaDesk/yundastore-releases/blob/main/TRUST.md)，
-版本变化见 [发行说明](https://github.com/YundaDesk/yundastore-releases/blob/main/RELEASE-NOTES-1.0.2.md)。
+版本变化见 [发行说明](https://github.com/YundaDesk/yundastore-releases/blob/main/RELEASE-NOTES-1.0.3.md)。
